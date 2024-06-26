@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\Type;
+use App\Models\Technology;
 
 class ProjectController extends Controller
 {
@@ -25,9 +26,10 @@ class ProjectController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    { {
-            return view("admin.project.create");
-        }
+    {
+        $types = Type::all();
+        $technologys = Technology::all();
+        return view("admin.project.create", compact('types', 'technologys'));
     }
     /**
      * Store a newly created resource in storage.

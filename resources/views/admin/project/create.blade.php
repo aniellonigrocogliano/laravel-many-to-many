@@ -19,13 +19,15 @@
 
             </div>
             <div>
-                <select class="form-select" aria-label="Default select example" id="type_id" name="type_id">
-                    <option selected>Seleziona una tipologia</option>
-                    <option value="1">Sito web</option>
-                    <option value="2">Web app</option>
-                    <option value="3">App</option>
-                    <option value="4">Sito mobile</option>
-                </select>
+                <div class="input-group mb-3">
+                    <select class="form-select" aria-label="Default select example" id="type_id" name="type_id">
+                        <option value="" selected>Seleziona una tipologia</option>
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}">{{ $type->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon3">Autore</span>

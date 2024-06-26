@@ -43,11 +43,7 @@
             <div class="input-group mb-3">
                 <input type="file" class="form-control" id="cover_image" name="cover_image">
                 <label class="input-group-text" for="cover_image">Upload</label>
-
-            </div>
-            <div>
                 <h4>Preview dell'immagine</h4>
-
                 @if ($project->cover_image)
                     <img src="{{ asset('storage/' . $project->cover_image) }}" alt="Immagine di copertura">
                 @endif

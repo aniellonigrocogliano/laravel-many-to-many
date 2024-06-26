@@ -66,7 +66,13 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.project.create' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.project.create') }}">
-                                    <i class="fa-solid fa-circle-plus fa-lg fa-fw"></i> Aggiungi
+                                    <i class="fa-solid fa-circle-plus fa-lg fa-fw"></i> Aggiungi Contenuto
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.technologies.create' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.technologies.create') }}">
+                                    <i class="fa-solid fa-circle-plus fa-lg fa-fw"></i> Aggiungi tecnologia
                                 </a>
                             </li>
                         </ul>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TechnologyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,8 @@ Route::middleware('auth')
         Route::resource('projects', ProjectController::class)->parameters([
             'projects' => 'project:slug'
         ])->only(['show', 'destroy', 'edit']);
+
+        Route::resource('technologies', TechnologyController::class);
     });
 
 require __DIR__ . '/auth.php';
