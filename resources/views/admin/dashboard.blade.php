@@ -45,21 +45,46 @@
                         <td>
                         <td><a class="btn btn-outline-primary" href="{{ route('admin.projects.show', $project->slug) }}"><i
                                     class="fa-solid fa-eye"></i></a></td>
-                        <td><a class="btn btn-outline-warning" href="{{ route('admin.projects.edit', $project->slug) }}}"><i
+                        <td><a class="btn btn-outline-warning" href="{{ route('admin.projects.edit', $project->slug) }}"><i
                                     class="fa-solid fa-pen"></i></a>
                         <td>
-                            <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST"
-                                onsubmit="return confirm('Sei sicuro di voler eliminare questo fumetto?');"
-                                class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-outline-danger"><i
-                                        class="fa-solid fa-trash"></i></button>
-                            </form>
+                        <td>
+                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal{{ $project->slug }}">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+
+
+                            <div class="modal fade" id="deleteModal{{ $project->slug }}" tabindex="-1"
+                                aria-labelledby="deleteModalLabel{{ $project->slug }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel{{ $project->slug }}">Conferma
+                                                Eliminazione</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Sei sicuro di voler eliminare il progetto "{{ $project->title }}"?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Annulla</button>
+                                            <form action="{{ route('admin.projects.destroy', $project->slug) }}"
+                                                method="POST" class="d-inline" id="deleteForm{{ $project->slug }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Elimina</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-    </section>
-@endsection
+        </div>
+    @endsection

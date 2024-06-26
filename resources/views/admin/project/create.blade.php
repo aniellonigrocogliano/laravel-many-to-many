@@ -33,7 +33,8 @@
                 <h6>Seleziona le tecnologie</h6>
                 @foreach ($technologys as $technology)
                     <div class="form-check form-check-inline">
-                        <input class="btn-check" type="checkbox" value="{{ $technology->id }}" id="flexCheckDefault">
+                        <input class="btn-check" type="checkbox" name="technologies[]" value="{{ $technology->id }}"
+                            id="flexCheckDefault">
                         <label class="btn btn-outline-success btn-sm" for="flexCheckDefault">
                             {{ $technology->name }}
                         </label>

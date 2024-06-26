@@ -11,6 +11,9 @@ class TechnologyController extends Controller
     // Display a listing of the resource.
     public function index()
     {
+
+        $technology = Technology::all();
+        return view('admin.technologies.index', compact('technology'));
     }
 
     // Show the form for creating a new resource.
@@ -27,7 +30,7 @@ class TechnologyController extends Controller
         $technology->fill($data);
         $technology->save();
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.technologies.index')->with('success', 'Tecnologia aggiunta con successo.');
     }
 
     // Display the specified resource.
@@ -52,7 +55,7 @@ class TechnologyController extends Controller
         $technology->name = $request->name;
         $technology->save();
 
-        return redirect()->route('technologies.index')->with('success', 'Technology updated successfully.');
+        return redirect()->route('technologies.index')->with('success', 'Tecnologia aggiornata con successo.');
     }
 
     // Remove the specified resource from storage.
@@ -60,6 +63,6 @@ class TechnologyController extends Controller
     {
         $technology->delete();
 
-        return redirect()->route('technologies.index')->with('success', 'Technology deleted successfully.');
+        return redirect()->route('admin.technologies.index')->with('success', 'Tecnologia eliminata con successo.');
     }
 }

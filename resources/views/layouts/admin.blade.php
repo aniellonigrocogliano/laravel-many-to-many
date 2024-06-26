@@ -70,9 +70,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.technologies.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.technologies.index') }}">
+                                    <i class="fa-solid fa-file-code fa-lg fa-fw"></i> Lista tecnologie
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.technologies.create' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.technologies.create') }}">
-                                    <i class="fa-solid fa-circle-plus fa-lg fa-fw"></i> Aggiungi tecnologia
+                                    <i class="fa-solid fa-file-circle-plus fa-lg fa-fw"></i> Aggiungi tecnologia
                                 </a>
                             </li>
                         </ul>

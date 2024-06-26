@@ -36,17 +36,29 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-
         $data = $request->all();
+
+        // Gestione dell'immagine di copertina (se presente)
         if ($request->hasFile('cover_image')) {
-            $image_path = Storage::put('cover_image', $request->file('cover_image'));
+            $image_path = Storage::put('cover_images', $request->file('cover_image'));
             $data['cover_image'] = $image_path;
         }
+
+        // Generazione dello slug e data di creazione
         $data['slug'] = Str::slug($data['title']);
         $data['creation_date'] = Carbon::now()->format('Y-m-d');
+
+        // Creazione del progetto
         $project = new Project();
         $project->fill($data);
         $project->save();
+
+        // Gestione delle tecnologie associate
+        if ($request->has('technologies')) {
+            $technologies = $request->input('technologies');
+            $project->technologies()->attach($technologies);
+        }
+
         return redirect()->route('admin.projects.show', $project->slug);
     }
 
@@ -55,6 +67,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+
         return view('admin.project.show', compact('project'));
     }
     /**
