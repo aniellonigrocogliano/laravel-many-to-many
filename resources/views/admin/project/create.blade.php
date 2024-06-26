@@ -29,6 +29,17 @@
                     </select>
                 </div>
             </div>
+            <div class="mb-3">
+                <h6>Seleziona le tecnologie</h6>
+                @foreach ($technologys as $technology)
+                    <div class="form-check form-check-inline">
+                        <input class="btn-check" type="checkbox" value="{{ $technology->id }}" id="flexCheckDefault">
+                        <label class="btn btn-outline-success btn-sm" for="flexCheckDefault">
+                            {{ $technology->name }}
+                        </label>
+                    </div>
+                @endforeach
+            </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon3">Autore</span>
                 <input type="text" class="form-control 
